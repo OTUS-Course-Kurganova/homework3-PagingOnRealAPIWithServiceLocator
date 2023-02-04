@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1800838F2973F5B9001761A0 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800838E2973F5B9001761A0 /* ServiceLocator.swift */; };
+		180083912973F63A001761A0 /* LauretesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180083902973F63A001761A0 /* LauretesService.swift */; };
+		180083B3298E4BF2001761A0 /* NobelPrizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180083B2298E4BF2001761A0 /* NobelPrizeService.swift */; };
+		180083B5298E5584001761A0 /* ScienceCategoryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180083B4298E5584001761A0 /* ScienceCategoryTypes.swift */; };
 		181D2D862957890A00F289FA /* NobelPrizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D2D852957890A00F289FA /* NobelPrizeView.swift */; };
 		1843644D2954AFED002A8F59 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843644C2954AFED002A8F59 /* SegmentedView.swift */; };
 		184364502954B081002A8F59 /* LaureateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843644F2954B081002A8F59 /* LaureateView.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1800838E2973F5B9001761A0 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		180083902973F63A001761A0 /* LauretesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauretesService.swift; sourceTree = "<group>"; };
+		180083B2298E4BF2001761A0 /* NobelPrizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobelPrizeService.swift; sourceTree = "<group>"; };
+		180083B4298E5584001761A0 /* ScienceCategoryTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceCategoryTypes.swift; sourceTree = "<group>"; };
 		1801463D295364310089B19A /* generate.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate.sh; sourceTree = "<group>"; };
 		1801463F295366590089B19A /* NobelMedia-NobelMasterData-2.0-resolved.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "NobelMedia-NobelMasterData-2.0-resolved.json"; sourceTree = "<group>"; };
 		181D2D852957890A00F289FA /* NobelPrizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobelPrizeView.swift; sourceTree = "<group>"; };
@@ -73,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180083882973F4B5001761A0 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				180083902973F63A001761A0 /* LauretesService.swift */,
+				180083B2298E4BF2001761A0 /* NobelPrizeService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		1800838D2973F591001761A0 /* serviceLocator */ = {
+			isa = PBXGroup;
+			children = (
+				1800838E2973F5B9001761A0 /* ServiceLocator.swift */,
+			);
+			path = serviceLocator;
+			sourceTree = "<group>";
+		};
 		1801463E295366000089B19A /* generateNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +141,7 @@
 			children = (
 				187B285F295382400089C082 /* LaureateDataSource.swift */,
 				1843645B2954BECD002A8F59 /* LaureateBasicDataSource.swift */,
+				180083B4298E5584001761A0 /* ScienceCategoryTypes.swift */,
 			);
 			path = dataSource;
 			sourceTree = "<group>";
@@ -189,10 +215,12 @@
 			isa = PBXGroup;
 			children = (
 				187CCD0F296472DF004C836F /* Network */,
-				18A700A12953423600EB8C85 /* app */,
+				1800838D2973F591001761A0 /* serviceLocator */,
+				180083882973F4B5001761A0 /* services */,
 				187B285929537ECE0089C082 /* laureates */,
 				187B2861295382450089C082 /* laureate */,
 				184364572954BE01002A8F59 /* nobelPrizes */,
+				18A700A12953423600EB8C85 /* app */,
 				1843645F2955BD06002A8F59 /* extensions */,
 				18A700992953422900EB8C85 /* Preview Content */,
 			);
@@ -291,6 +319,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180083B5298E5584001761A0 /* ScienceCategoryTypes.swift in Sources */,
+				180083912973F63A001761A0 /* LauretesService.swift in Sources */,
 				1843646F295748A7002A8F59 /* NavigationViewModel.swift in Sources */,
 				18A700962953422800EB8C85 /* ContentView.swift in Sources */,
 				1843644D2954AFED002A8F59 /* SegmentedView.swift in Sources */,
@@ -307,9 +337,11 @@
 				187B285B29537EFF0089C082 /* LaureatesViewModel.swift in Sources */,
 				184364682957120E002A8F59 /* NavigationAnimationType.swift in Sources */,
 				184364632955C9F3002A8F59 /* ProgressBarModifier.swift in Sources */,
+				1800838F2973F5B9001761A0 /* ServiceLocator.swift in Sources */,
 				18436465295711AE002A8F59 /* NavigationType.swift in Sources */,
 				184364562954B157002A8F59 /* LaureatesListView.swift in Sources */,
 				187B2860295382400089C082 /* LaureateDataSource.swift in Sources */,
+				180083B3298E4BF2001761A0 /* NobelPrizeService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

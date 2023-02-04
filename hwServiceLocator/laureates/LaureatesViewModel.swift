@@ -8,25 +8,23 @@
 import SwiftUI
 import Network
 
-enum ScienceCategory: String {
-    case chemistry = "Химии"
-    case medicine = "Медицины"
+protocol LaureatesViewModelProtocol {
+    var dataSource: [LaureateDataSource]? { get set }
+
+    func transform(category: ScienceCategory)
+    func getLaureates(category: ScienceCategory)
 }
 
 final class LaureatesViewModel: ObservableObject {
-    @Published var laureates: [LaureateDataSource] = []
+    fileprivate let service = LaureteService()
 
-    private let limit = 25
-    var isLoading = false
-    private var currentCategory: ScienceCategory = .chemistry
+    fileprivate var currentCategory: ScienceCategory = .chemistry
+    fileprivate var transformedCategory: DefaultAPI.NobelPrizeCategory_laureatesGet?
 
-    func getLaureates(category: ScienceCategory) {
-        if category != currentCategory {
-            laureates.removeAll()
-            currentCategory = category
-        }
-        let modelCategory = convertCategories(category: category)
-        fetchLaureates(category: modelCategory)
+    var dataSource: [LaureateDataSource]?
+
+    func  transform(category: ScienceCategory) {
+        transformedCategory = convertCategories(category: category)
     }
 
     fileprivate func convertCategories(category: ScienceCategory) -> DefaultAPI.NobelPrizeCategory_laureatesGet {
@@ -36,13 +34,25 @@ final class LaureatesViewModel: ObservableObject {
         }
     }
 
-    fileprivate func fetchLaureates(category: DefaultAPI.NobelPrizeCategory_laureatesGet) {
-        isLoading = true
-        DefaultAPI.laureatesGet(offset: laureates.count, limit: limit, nobelPrizeCategory: category) { [weak self] data, error in
-            guard let self = self, let data = data, let laureates = data.laureates else { return }
-            laureates.forEach {
-                self.laureates.append(.init(laureate: $0))
-            }
-        }
+    func getLaureates(category: ScienceCategory) {
+        prepare(category: category)
+        getFromService()
     }
+
+    fileprivate func prepare(category: ScienceCategory) {
+        if category != currentCategory {
+            service.clear()
+            currentCategory = category
+        }
+        transform(category: category)
+    }
+
+    fileprivate func getFromService() {
+        guard let category = transformedCategory else {
+            service.clear()
+            return
+        }
+        self.dataSource = service.getLaureates(category: category)
+    }
+
 }
