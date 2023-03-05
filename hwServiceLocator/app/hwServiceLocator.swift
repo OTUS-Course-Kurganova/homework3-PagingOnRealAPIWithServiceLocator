@@ -13,6 +13,7 @@ struct hwServiceLocatorApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(LaureatesViewModel())
+                .environmentObject(NobelPrizeViewModel())
                 .environmentObject(SegmentedViewModel())
                 .environmentObject(NavigationViewModel(easing: .default))
         }

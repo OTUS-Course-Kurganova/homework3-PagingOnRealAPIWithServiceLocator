@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var laureateViewModel: LaureatesViewModel
+    @EnvironmentObject var nobelPrizesViewModel: NobelPrizeViewModel
     @EnvironmentObject var segmentViewModel: SegmentedViewModel
 
     var body: some View {
@@ -34,7 +35,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(LaureatesViewModel())
+            .environmentObject(NobelPrizeViewModel())
             .environmentObject(SegmentedViewModel())
-            .environmentObject(NavigationViewModel(easing: .default))
+//            .environmentObject(NavigationViewModel(easing: .default))
     }
 }

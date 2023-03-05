@@ -1,30 +1,26 @@
 //
-//  NobelPrizeView.swift
+//  OthersNobelPrizesInYearView.swift
 //  hwServiceLocator
 //
-//  Created by Sasha Kurganova on 24.12.2022.
+//  Created by Alexandra Kurganova on 25.02.2023.
 //
 
 import SwiftUI
 
-struct NobelPrizeView: View {
+struct OthersNobelPrizesInYearView: View {
     @EnvironmentObject private var navigation: NavigationViewModel
-    @EnvironmentObject private var viewModel: NobelPrizeViewModel
-
-    @State var laureate: LaureateDataSource
+    @EnvironmentObject var viewModel: NobelPrizeViewModel
 
     var body: some View {
         ScrollView {
             VStack {
-                configureTitle(laureate.name)
-                    .padding(.top, 20)
-                Divider()
-                ForEach(laureate.nobelPrizes) { prize in
-                    configureSectionsInfo(prize: prize)
-                }
+                configureTitle("Category: \(viewModel.dataSource.first?.category ?? "unknown")")
+                .padding(.top, 20)
+            Divider()
+                ForEach(viewModel.dataSource) { prize in
+                configureSectionsInfo(prize: prize)
+            }
                 configureBackStack()
-                if viewModel.dataSource.isEmpty && viewModel.isLoading { loader }
-                showAllPrizesThisYear
             }
         }
     }
@@ -40,7 +36,6 @@ struct NobelPrizeView: View {
     
     fileprivate func configureSectionsInfo(prize: NobelPrizeDataSource) -> some View {
         Group {
-            configureSectionInfo(title: "Категория: ", info: prize.category)
             configureSectionInfo(title: "Год выигрыша: ", info: prize.awardYear)
             configureSectionInfo(title: "Сумма выигрыша: ", info: prize.amount.formatted())
             configureSectionInfo(title: "Статус: ", info: prize.status.rawValue)
@@ -50,7 +45,7 @@ struct NobelPrizeView: View {
                 .padding(.bottom, 15)
         }
     }
-
+    
     fileprivate func configureSectionInfo(title: String, info: String) -> some View {
         HStack {
             Text(title)
@@ -84,7 +79,7 @@ struct NobelPrizeView: View {
         }
         .padding(.top, 50)
     }
-    
+
     fileprivate var comeBackToRoot: some View {
         Button {
             navigation.pop(destination: .poptoRoot)
@@ -95,32 +90,10 @@ struct NobelPrizeView: View {
                 .font(.system(size: 14))
         }
     }
-
-    private var loader: some View {
-        ProgressView()
-            .progressViewStyle(CircularProgressViewStyle())
-            .padding(.top, 100)
-    }
-
-    fileprivate var showAllPrizesThisYear: some View {
-        Button {
-            navigation.push(newView: OthersNobelPrizesInYearView().onAppear {
-                guard let prize = laureate.nobelPrizes.first else { return }
-                viewModel.getNobelPrizes(year: Int(prize.awardYear) ?? 0,
-                                         category: ScienceCategory(rawValue: prize.category) ?? .chemistry)
-            })
-        } label: {
-            Text("Другие премии этого года")
-                .fontWeight(.bold)
-                .foregroundColor(.teal)
-                .font(.system(size: 16))
-        }
-        .padding(.top, 30)
-    }
 }
 
-struct NobelPrizeView_Previews: PreviewProvider {
+struct OthersNobelPrizesInYearView_Previews: PreviewProvider {
     static var previews: some View {
-        NobelPrizeView(laureate: .init(laureate: .init(id: "1")))
+        OthersNobelPrizesInYearView()
     }
 }

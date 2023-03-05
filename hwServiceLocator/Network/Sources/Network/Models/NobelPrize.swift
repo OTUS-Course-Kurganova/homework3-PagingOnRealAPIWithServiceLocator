@@ -13,7 +13,7 @@ import AnyCodable
 /** Model containing Nobel Prize information */
 public struct NobelPrize: Codable, JSONEncodable, Hashable {
 
-    public var awardYear: Int?
+    public var awardYear: String?
     public var category: Translation?
     public var categoryFullName: Translation?
     public var dateAwarded: Date?
@@ -24,7 +24,7 @@ public struct NobelPrize: Codable, JSONEncodable, Hashable {
     public var topMotivation: Translation?
     public var laureates: [LaureateBasic]?
 
-    public init(awardYear: Int? = nil, category: Translation? = nil, categoryFullName: Translation? = nil, dateAwarded: Date? = nil, prizeAmount: Int? = nil, prizeAmountAdjusted: Int? = nil, topMotivation: Translation? = nil, laureates: [LaureateBasic]? = nil) {
+    public init(awardYear: String? = nil, category: Translation? = nil, categoryFullName: Translation? = nil, dateAwarded: Date? = nil, prizeAmount: Int? = nil, prizeAmountAdjusted: Int? = nil, topMotivation: Translation? = nil, laureates: [LaureateBasic]? = nil) {
         self.awardYear = awardYear
         self.category = category
         self.categoryFullName = categoryFullName

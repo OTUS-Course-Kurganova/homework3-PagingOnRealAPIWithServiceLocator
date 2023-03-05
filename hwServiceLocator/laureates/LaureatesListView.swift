@@ -15,10 +15,10 @@ struct LaureatesListView: View {
     @State var isRotating = 0.0
 
     var body: some View {
-        if viewModel.laureates.isEmpty && viewModel.isLoading { loader }
+        if viewModel.dataSource.isEmpty && viewModel.isLoading { loader }
         List {
-            ForEach(viewModel.laureates) { laureate in
-                contentCell(laureate: laureate, isLast: viewModel.laureates.isLast(laureate))
+            ForEach(viewModel.dataSource) { laureate in
+                contentCell(laureate: laureate, isLast: viewModel.dataSource.isLast(laureate))
                     .rotationEffect(.degrees(isRotating))
                     .animation(.linear(duration: 1), value: isRotating)
             }

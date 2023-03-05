@@ -9,19 +9,20 @@ import SwiftUI
 import Network
 
 protocol LaureatesViewModelProtocol {
-    var dataSource: [LaureateDataSource]? { get set }
+    var isLoading: Bool { get set }
 
     func transform(category: ScienceCategory)
     func getLaureates(category: ScienceCategory)
 }
 
-final class LaureatesViewModel: ObservableObject {
+final class LaureatesViewModel: LaureatesViewModelProtocol, ObservableObject {
+    var isLoading: Bool = false
+    @Published var dataSource: [LaureateDataSource] = []
+
     fileprivate let service = LaureteService()
 
     fileprivate var currentCategory: ScienceCategory = .chemistry
     fileprivate var transformedCategory: DefaultAPI.NobelPrizeCategory_laureatesGet?
-
-    var dataSource: [LaureateDataSource]?
 
     func  transform(category: ScienceCategory) {
         transformedCategory = convertCategories(category: category)
@@ -52,7 +53,10 @@ final class LaureatesViewModel: ObservableObject {
             service.clear()
             return
         }
-        self.dataSource = service.getLaureates(category: category)
+        self.isLoading = service.isLoading
+        service.getLaureates(category: category) { data in
+            self.dataSource = data
+        }
     }
 
 }

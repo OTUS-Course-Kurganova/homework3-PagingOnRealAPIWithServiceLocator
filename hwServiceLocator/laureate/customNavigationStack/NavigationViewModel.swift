@@ -26,6 +26,7 @@ final class NavigationViewModel: ObservableObject {
 
     func push<S: View>(newView: S) {
         withAnimation(easing) {
+            print("pushing", newView)
             navigationType = .push
             let screen = Screen(id: UUID().uuidString, screenView: AnyView(newView))
             screensStack.push(newScreen: screen)
@@ -34,6 +35,7 @@ final class NavigationViewModel: ObservableObject {
 
     func pop(destination: PopDestination = .prevPop) {
         withAnimation(easing) {
+            print("popping", destination)
             switch destination {
             case .prevPop:
                 navigationType = .pop

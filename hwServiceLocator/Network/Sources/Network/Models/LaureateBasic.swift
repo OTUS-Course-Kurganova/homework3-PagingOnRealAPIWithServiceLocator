@@ -24,14 +24,14 @@ public struct LaureateBasic: Codable, JSONEncodable, Hashable {
         case _2 = "2"
         case _3 = "3"
     }
-    public var id: Int?
+    public var id: String?
     public var name: Translation?
     public var portion: Portion? = ._1
     public var sortOrder: SortOrder? = ._1
     public var motivation: Translation?
     public var links: ItemLinks?
 
-    public init(id: Int? = nil, name: Translation? = nil, portion: Portion? = ._1, sortOrder: SortOrder? = ._1, motivation: Translation? = nil, links: ItemLinks? = nil) {
+    public init(id: String? = nil, name: Translation? = nil, portion: Portion? = ._1, sortOrder: SortOrder? = ._1, motivation: Translation? = nil, links: ItemLinks? = nil) {
         self.id = id
         self.name = name
         self.portion = portion

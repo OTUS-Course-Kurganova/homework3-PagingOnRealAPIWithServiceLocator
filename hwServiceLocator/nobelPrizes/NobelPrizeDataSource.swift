@@ -17,12 +17,20 @@ final class NobelPrizeDataSource {
     let status: NobelPrizePerLaureate.PrizeStatus
     let motivation: String
 
-    init(prize: NobelPrizePerLaureate) {
-        category = prize.categoryFullName?.en ?? unknown
-        awardYear = prize.awardYear ?? unknown
-        amount = prize.prizeAmount ?? 0
-        motivation = prize.motivation?.en ?? unknown
-        status = prize.prizeStatus ?? .restricted
+    init(prizePerLaureate: NobelPrizePerLaureate) {
+        category = prizePerLaureate.categoryFullName?.en ?? unknown
+        awardYear = prizePerLaureate.awardYear ?? unknown
+        amount = prizePerLaureate.prizeAmount ?? 0
+        motivation = prizePerLaureate.motivation?.en ?? unknown
+        status = prizePerLaureate.prizeStatus ?? .restricted
+    }
+
+    init(prize: NobelPrize) {
+        self.category = prize.category?.en ?? unknown
+        self.awardYear = prize.awardYear ?? unknown
+        self.amount = prize.prizeAmount ?? 0
+        self.motivation = prize.topMotivation?.en ?? unknown
+        self.status = .restricted
     }
 }
 

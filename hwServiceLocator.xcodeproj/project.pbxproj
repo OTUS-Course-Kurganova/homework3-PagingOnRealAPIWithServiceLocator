@@ -33,6 +33,8 @@
 		18A700962953422800EB8C85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A700952953422800EB8C85 /* ContentView.swift */; };
 		18A700982953422900EB8C85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A700972953422900EB8C85 /* Assets.xcassets */; };
 		18A7009B2953422900EB8C85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A7009A2953422900EB8C85 /* Preview Assets.xcassets */; };
+		18E63A0929AA6152004B52BB /* OthersNobelPrizesInYearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E63A0829AA6152004B52BB /* OthersNobelPrizesInYearView.swift */; };
+		18E63A0B29AA6C69004B52BB /* NobelPrizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E63A0A29AA6C69004B52BB /* NobelPrizeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		18A700972953422900EB8C85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A7009A2953422900EB8C85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18A700A2295346C600EB8C85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
+		18E63A0829AA6152004B52BB /* OthersNobelPrizesInYearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersNobelPrizesInYearView.swift; sourceTree = "<group>"; };
+		18E63A0A29AA6C69004B52BB /* NobelPrizeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobelPrizeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				181D2D852957890A00F289FA /* NobelPrizeView.swift */,
+				18E63A0829AA6152004B52BB /* OthersNobelPrizesInYearView.swift */,
+				18E63A0A29AA6C69004B52BB /* NobelPrizeViewModel.swift */,
 				184364582954BE1E002A8F59 /* NobelPrizeDataSource.swift */,
 			);
 			path = nobelPrizes;
@@ -329,6 +335,8 @@
 				1843645C2954BECD002A8F59 /* LaureateBasicDataSource.swift in Sources */,
 				184364542954B109002A8F59 /* SegmentedViewModel.swift in Sources */,
 				1843646C29574275002A8F59 /* NavigationStack.swift in Sources */,
+				18E63A0929AA6152004B52BB /* OthersNobelPrizesInYearView.swift in Sources */,
+				18E63A0B29AA6C69004B52BB /* NobelPrizeViewModel.swift in Sources */,
 				1843647129574F08002A8F59 /* NavigationCustomView.swift in Sources */,
 				181D2D862957890A00F289FA /* NobelPrizeView.swift in Sources */,
 				184364612955BD2D002A8F59 /* RandomAccessCollection.swift in Sources */,

@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct NavigationCustomView<Content>: View where Content: View {
-    @ObservedObject private var viewModel: NavigationViewModel
+    @EnvironmentObject private var viewModel: NavigationViewModel
 
     var content: Content
     var transition: (push: AnyTransition, pop: AnyTransition)
 
-    init(viewModel: NavigationViewModel = .init(easing: .easeOut(duration: 0.4)), transition: NavigationAnimationType,
+    init(transition: NavigationAnimationType,
          @ViewBuilder contentBuilder: @escaping () -> Content) {
-        self.viewModel = viewModel
         self.content = contentBuilder()
         
         switch transition {

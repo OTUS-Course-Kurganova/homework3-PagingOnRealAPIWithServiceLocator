@@ -629,8 +629,8 @@
       "type": "object",
       "properties": {
         "awardYear": {
-          "type": "integer",
-          "example": 1989
+          "type": "string",
+          "example": "1989"
         },
         "category": {
           "$ref": "#/definitions/translation"
@@ -746,9 +746,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "integer",
-          "example": 34,
-          "minimum": 1
+          "type": "string",
+          "example": "34"
         },
         "name": {
           "$ref": "#/definitions/translation"
