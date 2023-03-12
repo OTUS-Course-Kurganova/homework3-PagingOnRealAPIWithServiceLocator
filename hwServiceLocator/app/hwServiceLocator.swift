@@ -9,6 +9,10 @@ import SwiftUI
 
 @main
 struct hwServiceLocatorApp: App {
+    init() {
+        Configurator.shared.setup()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

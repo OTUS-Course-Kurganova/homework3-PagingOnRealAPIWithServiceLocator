@@ -18,7 +18,7 @@ final class NobelPrizeViewModel: NobelPrizeViewModelProtocol, ObservableObject {
     var isLoading: Bool = false
     @Published var dataSource: [NobelPrizeDataSource] = []
 
-    fileprivate let service = NobelPrizeService()
+    @Injected var service: NobelPrizeServiceProtocol?
     fileprivate var transformedCategory: DefaultAPI.NobelPrizeCategory_laureatesGet?
 
     func getNobelPrizes(year: Int, category: ScienceCategory) {
@@ -38,6 +38,7 @@ final class NobelPrizeViewModel: NobelPrizeViewModelProtocol, ObservableObject {
     }
 
     fileprivate func getFromService(year: Int) {
+        guard let service = service else { return }
         self.isLoading = service.isLoading
 
         guard let category = transformedCategory else {

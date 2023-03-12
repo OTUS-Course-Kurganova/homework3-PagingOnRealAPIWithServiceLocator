@@ -19,7 +19,7 @@ final class LaureatesViewModel: LaureatesViewModelProtocol, ObservableObject {
     var isLoading: Bool = false
     @Published var dataSource: [LaureateDataSource] = []
 
-    fileprivate let service = LaureteService()
+    @Injected var service: LaureteServiceProtocol?
 
     fileprivate var currentCategory: ScienceCategory = .chemistry
     fileprivate var transformedCategory: DefaultAPI.NobelPrizeCategory_laureatesGet?
@@ -42,15 +42,15 @@ final class LaureatesViewModel: LaureatesViewModelProtocol, ObservableObject {
 
     fileprivate func prepare(category: ScienceCategory) {
         if category != currentCategory {
-            service.clear()
+            service?.clear()
             currentCategory = category
         }
         transform(category: category)
     }
 
     fileprivate func getFromService() {
-        guard let category = transformedCategory else {
-            service.clear()
+        guard let category = transformedCategory, let service = service else {
+            service?.clear()
             return
         }
         self.isLoading = service.isLoading
